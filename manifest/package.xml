@@ -13,11 +13,15 @@
         <name>ValidationRule</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Attendee</members>
+        <members>Organizer</members>
+        <members>Speaker</members>
         <name>Role</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Speaker</members>
+        <members>Event Attendee</members>
+        <members>Event Organizer</members>
         <name>Profile</name>
     </types>
     <types>
@@ -29,7 +33,11 @@
         <name>DuplicateRule</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Attendee__c</members>
+        <members>Error_Log__c</members>
+        <members>Event_Organizer__c</members>
+        <members>Location__c</members>
+        <members>Speaker__c</members>
         <name>SharingRules</name>
     </types>
     <version>52.0</version>
