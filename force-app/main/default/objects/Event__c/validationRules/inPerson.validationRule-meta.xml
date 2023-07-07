@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>inPerson</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(TEXT(Event_Type__c) = &quot;In-Person&quot;, ISBLANK(Location__c))</errorConditionFormula>
+    <errorMessage>The &apos;Location&apos; field must be filled when the &apos;Event Type&apos; is set to &apos;In-Person&apos;.</errorMessage>
+</ValidationRule>

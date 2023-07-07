@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>attendeeAssociation</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(
+  AND(
+    Event__r.End_Date_Time__c  &gt; NOW(),
+    Event__r.Live__c ,
+    Event__r.Remaining_Seats__c &gt; 0
+  )
+)</errorConditionFormula>
+    <errorMessage>An attendee can only be associated with an event that is live, accepting attendees (remaining seats is not 0), and whose end date is in the future.</errorMessage>
+</ValidationRule>

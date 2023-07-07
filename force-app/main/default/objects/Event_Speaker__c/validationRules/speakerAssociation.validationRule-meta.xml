@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>speakerAssociation</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(
+  AND(
+    Event__r.End_Date_Time__c  &gt; NOW(),
+    Event__r.Live__c 
+  )
+)</errorConditionFormula>
+    <errorMessage>A speaker can only be associated with an event that is live and whose end date is in the future.</errorMessage>
+</ValidationRule>
