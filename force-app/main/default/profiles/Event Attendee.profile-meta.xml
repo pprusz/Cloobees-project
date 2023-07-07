@@ -116,6 +116,14 @@
         <field>Speaker__c.Company__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Calculate_Last_Event_Date</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Update_Attendee_Status_To_Inactive</flow>
+    </flowAccesses>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
