@@ -40,5 +40,25 @@
         <members>Speaker__c</members>
         <name>SharingRules</name>
     </types>
+        <types>
+        <members>Calculate_Last_Event_Date</members>
+        <members>Update_Attendee_Status_To_Inactive</members>
+        <name>FlowDefinition</name>
+    </types>
+    <types>
+        <members>Calculate_Last_Event_Date</members>
+        <members>Update_Attendee_Status_To_Inactive</members>
+        <name>Flow</name>
+    </types>
+        <types>
+        <members>Calculate_Last_Event_Date</members>
+        <members>Update_Attendee_Status_To_Inactive</members>
+        <name>FlowDefinition</name>
+    </types>
+    <types>
+        <members>Calculate_Last_Event_Date</members>
+        <members>Update_Attendee_Status_To_Inactive</members>
+        <name>Flow</name>
+    </types>
     <version>52.0</version>
 </Package>
