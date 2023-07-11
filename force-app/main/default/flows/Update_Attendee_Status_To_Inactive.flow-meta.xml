@@ -32,23 +32,12 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Get_Attendees</name>
-        <label>Get Attendees</label>
+    <recordUpdates>
+        <name>Update_Attendee_Status</name>
+        <label>Update Attendee Status</label>
         <locationX>176</locationX>
         <locationY>252</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Update_Attendee_Status</targetReference>
-        </connector>
         <filterLogic>and</filterLogic>
-        <filters>
-            <field>Last_Event_Date__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
         <filters>
             <field>Last_Event_Date__c</field>
             <operator>LessThan</operator>
@@ -56,21 +45,11 @@
                 <elementReference>TwoMonthsAgo</elementReference>
             </value>
         </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>Attendee__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordUpdates>
-        <name>Update_Attendee_Status</name>
-        <label>Update Attendee Status</label>
-        <locationX>176</locationX>
-        <locationY>360</locationY>
-        <filterLogic>and</filterLogic>
         <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
+            <field>Last_Event_Date__c</field>
+            <operator>IsNull</operator>
             <value>
-                <elementReference>$Record.Id</elementReference>
+                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <inputAssignments>
@@ -85,13 +64,13 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Attendees</targetReference>
+            <targetReference>Update_Attendee_Status</targetReference>
         </connector>
         <object>Attendee__c</object>
         <schedule>
             <frequency>Daily</frequency>
             <startDate>2023-07-07</startDate>
-            <startTime>15:54:00.000Z</startTime>
+            <startTime>11:09:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
