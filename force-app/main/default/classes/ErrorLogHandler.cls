@@ -1,4 +1,4 @@
-public class ErrorLogHandler {
+public with sharing class ErrorLogHandler {
     public static void insertErrorLog( DateTime logDateTime, String logDetails, String processName) {
         Error_Log__c errorLog = new Error_Log__c();
         errorLog.Log_Date_Time__c = logDateTime;
@@ -7,7 +7,7 @@ public class ErrorLogHandler {
 
         try {
             insert errorLog;
-        } catch (DmlException e) {
+        } catch (Exception e) {
             System.debug('The following exception has occurred: ' + e.getMessage());
         }
     }
