@@ -1,23 +1,19 @@
 trigger EventSpeakerTrigger on Event_Speaker__c (before insert, before update) {
+    Set<Id> speakerIds = new Set<Id>();
+    
     for (Event_Speaker__c newEventSpeaker : Trigger.new) {
-        List<Event_Speaker__c> existingEventSpeakers;
-
-        if (Trigger.isInsert) {
-            existingEventSpeakers = [
-                SELECT ID
-                FROM Event_Speaker__c
-                WHERE Speaker__c = :newEventSpeaker.Speaker__c
-            ];
-        } else if (Trigger.isUpdate) {
-            existingEventSpeakers = [
-                SELECT ID
-                FROM Event_Speaker__c
-                WHERE Speaker__c = :newEventSpeaker.Speaker__c
-                AND Id != :newEventSpeaker.Id
-            ];
-        }
-
-        if (!existingEventSpeakers.isEmpty()) {
+        speakerIds.add(newEventSpeaker.Speaker__c);
+    }
+    
+    Map<Id, Event_Speaker__c> existingEventSpeakers = new Map<Id, Event_Speaker__c>(
+        [SELECT Speaker__c 
+        FROM Event_Speaker__c 
+        WHERE Speaker__c IN :speakerIds]
+    );
+    
+    for (Event_Speaker__c newEventSpeaker : Trigger.new) {
+        if ((Trigger.isInsert || (Trigger.isUpdate && existingEventSpeakers.get(newEventSpeaker.Speaker__c).Id != newEventSpeaker.Id))
+            && existingEventSpeakers.containsKey(newEventSpeaker.Speaker__c)) {
             newEventSpeaker.addError('This speaker is already assigned to another event.');
         }
     }
