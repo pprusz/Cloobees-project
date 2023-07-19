@@ -1,4 +1,4 @@
-public class ErrorLogHandler {
+public with sharing class ErrorLogHandler {
     public static void insertErrorLog( DateTime logDateTime, String logDetails, String processName) {
         Error_Log__c errorLog = new Error_Log__c();
         errorLog.Log_Date_Time__c = logDateTime;
