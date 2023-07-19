@@ -35,7 +35,7 @@ public with sharing class EventAttendeeTriggerHandler {
                 + 'We are excited to have you, see you in the event.\n\n'
                 + 'Find the Google Map Location for the Event Here. (https://www.google.com/maps/place/' + event.Location__c + ')\n\n'
                 + 'Thanks,\n'
-                + 'Organizator imprezy: ' + event.Event_Organizer__r.Name + 'koniec';
+                + event.Event_Organizer__r.Name;
             email.setHTMLBody(emailBody);
 
             emails.add(email);
