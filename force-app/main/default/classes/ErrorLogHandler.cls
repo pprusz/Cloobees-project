@@ -7,7 +7,7 @@ public class ErrorLogHandler {
 
         try {
             insert errorLog;
-        } catch (DmlException e) {
+        } catch (Exception e) {
             System.debug('The following exception has occurred: ' + e.getMessage());
         }
     }
