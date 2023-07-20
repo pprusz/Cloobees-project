@@ -39,21 +39,11 @@ public with sharing class EventAttendeeTriggerHandler {
             email.setPlainTextBody(emailBody);
 
             emails.add(email);
-            System.debug(attendee.Email__c);
-            System.debug('email z attendee: ' + email.getToAddresses() + ', subject: ' + email.getSubject());
-            System.debug('treść emaila: '+ email.getHTMLBody());
         }
         try {
             Messaging.sendEmail(emails);
-            System.debug('skończone sendEmail2Attendee');
         } catch (Exception e) {
             System.debug(e.getMessage());
         }
-
-    }
-     public static void testInConsole() {
-        List<Event_Attendee__c> eventAttendees = [SELECT Id, Event__c, Attendee__c FROM Event_Attendee__c WHERE Event__c = 'a080600002JZPY1AAP' AND Attendee__c = 'a050600001EzX1UAAV'];
-        sendEmail2Attendee(eventAttendees);
-        System.debug('wysłana wiadomość z drugiej metody');
     }
 }
