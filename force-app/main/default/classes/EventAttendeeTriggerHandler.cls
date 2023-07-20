@@ -36,7 +36,7 @@ public with sharing class EventAttendeeTriggerHandler {
                 + 'Find the Google Map Location for the Event Here. (https://www.google.com/maps/place/' + event.Location__c + ')\n\n'
                 + 'Thanks,\n'
                 + event.Event_Organizer__r.Name;
-            email.setHTMLBody(emailBody);
+            email.setPlainTextBody(emailBody);
 
             emails.add(email);
             System.debug(attendee.Email__c);
