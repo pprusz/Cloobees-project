@@ -1,6 +1,6 @@
-public with sharing class SmartyStreetsAPI {
-    private static final String AUTH_ID = '84bb7412-3312-6a60-8104-cccdbf109826';
-    private static final String AUTH_TOKEN = 'VgI9TC37Hop7Ty1GsZZn';
+public with sharing class LocationTriggerHandler {
+    private static final String AUTH_ID = 'eeabacec-90df-66c7-5d49-e82d1434e511';
+    private static final String AUTH_TOKEN = 'BN6c2o66gKiA9bQlTB2d';
 
     @future(callout=true)
     public static void verifyInternationalAddress(List<Id> locationIds) {
@@ -24,10 +24,8 @@ public with sharing class SmartyStreetsAPI {
             List<Object> results = (List<Object>) JSON.deserializeUntyped(response.getBody());
                 if (!results.isEmpty()) {
                     Map<String, Object> resultAsMap = (Map<String, Object>) results[0];
-                    System.debug('location z API: ' + location);
                     location.Verified__c = true;
                 } else {
-                    System.debug('nie zweryfikowane: ' + location);
                     location.Verified__c = false;
                 }
             locationsToUpdate.add(location);
