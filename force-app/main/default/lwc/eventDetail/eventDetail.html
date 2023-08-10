@@ -1,0 +1,46 @@
+<template>
+    <lightning-card  title="Event Detail">
+        <lightning-tabset>
+            <lightning-tab label="Event Details">
+                <div class="slds-p-around_medium slds-card__body">
+                    <template if:true={eventDetail}>
+                        <lightning-record-form
+                            object-api-name='Event__c'
+                            record-id={recordId}
+                            fields={eventDetailFields}
+                            columns="2"
+                            mode="readonly">
+                        </lightning-record-form>
+                    </template>
+                </div>
+            </lightning-tab>
+            <lightning-tab label="Event Speakers">
+                <div style="height: 300px;">
+                    <lightning-datatable
+                            key-field="id"
+                            data={speakers}
+                            columns={columnsSpeakers}>
+                    </lightning-datatable>
+                </div>
+            </lightning-tab>
+            <lightning-tab label="Event Location">
+                <div style="height: 300px;">
+                    <lightning-datatable
+                            key-field="id"
+                            data={location}
+                            columns={columnsLocation}>
+                    </lightning-datatable>
+                </div>
+            </lightning-tab>
+            <lightning-tab label="Event Attendees">
+                <div style="height: 300px;">
+                    <lightning-datatable
+                            key-field="id"
+                            data={attendees}
+                            columns={columnsAttendees}>
+                    </lightning-datatable>
+                </div>
+            </lightning-tab>
+        </lightning-tabset>
+    </lightning-card>
+</template>
