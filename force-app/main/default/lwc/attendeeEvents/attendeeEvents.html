@@ -1,0 +1,28 @@
+<template>
+    <lightning-card  title="My Events">
+        
+            <lightning-accordion allow-multiple-sections-open>
+                
+                <lightning-accordion-section name="Upcoming Events" label="Upcoming Events">
+                        <div style="height: 300px;">
+                            <lightning-datatable
+                                    key-field="id"
+                                    data={upcomingEvents}
+                                    columns={upcomingEventsColumns}>
+                            </lightning-datatable>
+                        </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Past Events" label="Past Events">
+                        <div style="height: 300px;">
+                            <lightning-datatable
+                                    key-field="id"
+                                    data={pastEvents}
+                                    columns={pastEventsColumns}>
+                            </lightning-datatable>
+                        </div>
+                </lightning-accordion-section>
+        
+            </lightning-accordion>
+    </lightning-card>
+</template>
