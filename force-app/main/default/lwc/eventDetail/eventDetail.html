@@ -16,6 +16,13 @@
             </lightning-tab>
             <lightning-tab label="Event Speakers">
                 <div style="height: 300px;">
+                    <div>
+                        <lightning-button 
+                            label="Add New Speaker" 
+                            onclick={navigateToCreateEventSpeaker}
+                            class="slds-m-bottom_small">
+                        </lightning-button>
+                    </div>
                     <lightning-datatable
                             key-field="id"
                             data={speakers}
@@ -34,6 +41,13 @@
             </lightning-tab>
             <lightning-tab label="Event Attendees">
                 <div style="height: 300px;">
+                    <div>
+                        <lightning-button 
+                            label="Add New Attendee" 
+                            onclick={navigateToCreateEventAttendee}
+                            class="slds-m-bottom_small">
+                        </lightning-button>
+                    </div>
                     <lightning-datatable
                             key-field="id"
                             data={attendees}

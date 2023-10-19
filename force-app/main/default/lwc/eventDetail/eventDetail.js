@@ -24,8 +24,10 @@ import EVENT_SPEAKERS from '@salesforce/schema/Event_Speaker__c.Event__c';
 import getEventSpeakers from '@salesforce/apex/EventDetailController.getEventSpeakers';
 import getLocation from '@salesforce/apex/EventDetailController.getLocation';
 import getEventAttendees from '@salesforce/apex/EventDetailController.getEventAttendees';
+import { NavigationMixin } from 'lightning/navigation';
+import { encodeDefaultFieldValues } from 'lightning/pageReferenceUtils';
 
-export default class EventDetail extends LightningElement {
+export default class EventDetail extends NavigationMixin(LightningElement) {
     @api recordId;
 
     speakers;
@@ -78,6 +80,40 @@ export default class EventDetail extends LightningElement {
         CREATED_BY_NAME_FIELD
     ];
 
+    navigateToCreateEventSpeaker() {
+            const defaultValues = encodeDefaultFieldValues({
+                Event__c: this.recordId
+            });
+    
+            this[NavigationMixin.Navigate]({
+                type: 'standard__objectPage',
+                attributes: {
+                    objectApiName: 'Event_Speaker__c',
+                    actionName: 'new'
+                },
+                state: {
+                    defaultFieldValues: defaultValues
+                }
+            });
+    }
+
+    navigateToCreateEventAttendee() {
+        const defaultValues = encodeDefaultFieldValues({
+            Event__c: this.recordId
+        });
+
+        this[NavigationMixin.Navigate]({
+            type: 'standard__objectPage',
+            attributes: {
+                objectApiName: 'Event_Attendee__c',
+                actionName: 'new'
+            },
+            state: {
+                defaultFieldValues: defaultValues
+            }
+        });
+}
+
     @wire(getEventSpeakers, { eventId: '$recordId' })
     wiredSpeakers({ error, data }) {
         if (data) {
@@ -93,7 +129,7 @@ export default class EventDetail extends LightningElement {
             this.attendees = data.map(attendee => {
                 return {
                     ...attendee,
-                    LocationName: attendee.Location__r.Name
+                    LocationName: attendee.Location__r ? attendee.Location__r.Name : null
                 };
             });
         } else if (error) {
