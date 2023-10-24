@@ -1,0 +1,24 @@
+<template>
+    <lightning-card>
+        <lightning-input 
+            style="width: 300px; margin-left: 50px;" 
+            label="Event Name" 
+            value={eventName} 
+            onchange={handleNameChange}>
+        </lightning-input>
+        <lightning-input 
+            style="width: 300px; margin-left: 50px;" 
+            type="date" 
+            label="Start Date Time" 
+            value={startDate} 
+            onchange={handleDateChange}>
+        </lightning-input>
+    </lightning-card>
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={events}
+                columns={columnsEvents}>
+        </lightning-datatable>
+    </div>
+</template>
